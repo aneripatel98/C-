@@ -1,0 +1,37 @@
+vector<int> Solution::dNums(vector<int> &A, int B) {
+    vector <int> w;
+    int i=0;
+    int size=A.size();
+    int ws=1;
+    int count=0;
+    map<int,int> m;
+    for(i=0;i<B;i++){
+        if(m.find(A[i])==m.end()){
+            m.insert(make_pair(A[i],1));
+            count++;
+        }
+        else{
+            m[A[i]]=m[A[i]]+1;
+        }
+    }
+    w.push_back(count);
+    for(i=B;i<size;i++){
+        if(m[A[i-B]]!=1){
+            m[A[i-B]]=m[A[i-B]]-1;
+        }
+        else{
+            m.erase(A[i-B]);
+            count--;
+        }
+        if(m.find(A[i])==m.end()){
+            m.insert(make_pair(A[i],1));
+            count++;
+        }
+        else{
+            m[A[i]]=m[A[i]]+1;
+        }
+        w.push_back(count);
+    }
+    
+    return w;
+}
