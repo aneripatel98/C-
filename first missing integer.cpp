@@ -7,7 +7,7 @@ void swap(int* i, int* j){
 int Solution::firstMissingPositive(vector<int> &A) {
     int j=0;
     int n=A.size();
-    // move +ve numbers to right 
+    // move +ve numbers to left 
     for(int i=0;i<n;i++){
         if(A[i]>0){
             swap(A[i],A[j]);
